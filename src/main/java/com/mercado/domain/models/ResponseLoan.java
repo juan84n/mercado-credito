@@ -1,8 +1,8 @@
 package com.mercado.domain.models;
 
-public class ReponseLoan {
+public class ResponseLoan {
 	private long loan_id;
-	private long installment;
+	private double installment;
 	/**
 	 * @return the loan_id
 	 */
@@ -18,13 +18,13 @@ public class ReponseLoan {
 	/**
 	 * @return the installment
 	 */
-	public long getInstallment() {
+	public double getInstallment() {
 		return installment;
 	}
 	/**
 	 * @param installment the installment to set
 	 */
-	public void setInstallment(long installment) {
+	public void setInstallment(double installment) {
 		this.installment = installment;
 	}
 	

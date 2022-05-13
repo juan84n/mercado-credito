@@ -1,45 +1,34 @@
 package com.mercado.domain.models;
 
 public class Payment {
-	private long id;
-	private long loan_id;
-	private long debt;
+	
+	private long amount;
+	private Loan loan;
 	/**
-	 * @return the id
+	 * @return the amount
 	 */
-	public long getId() {
-		return id;
+	public long getAmount() {
+		return amount;
 	}
 	/**
-	 * @param id the id to set
+	 * @param amount the amount to set
 	 */
-	public void setId(long id) {
-		this.id = id;
+	public void setAmount(long amount) {
+		this.amount = amount;
 	}
 	/**
-	 * @return the loan_id
+	 * @return the loan
 	 */
-	public long getLoan_id() {
-		return loan_id;
+	public Loan getLoan() {
+		return loan;
 	}
 	/**
-	 * @param loan_id the loan_id to set
+	 * @param loan the loan to set
 	 */
-	public void setLoan_id(long loan_id) {
-		this.loan_id = loan_id;
-	}
-	/**
-	 * @return the debt
-	 */
-	public long getDebt() {
-		return debt;
-	}
-	/**
-	 * @param debt the debt to set
-	 */
-	public void setDebt(long debt) {
-		this.debt = debt;
+	public void setLoan(Loan loan) {
+		this.loan = loan;
 	}
 	
 	
 }
+
