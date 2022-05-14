@@ -1,5 +1,6 @@
 package com.mercado.infrastructure.persistence.entitites;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.Column;
@@ -12,10 +13,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name= "loans")
-public class LoanEntity {
+public class LoanEntity implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	private long amount;
 	private double rate;

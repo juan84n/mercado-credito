@@ -1,4 +1,4 @@
-package com.mercado.domain.usercase.loan;
+package com.mercado.domain.usecase.loan;
 
 
 import java.text.SimpleDateFormat;
@@ -13,6 +13,7 @@ import com.mercado.domain.models.User;
 import com.mercado.domain.repository.LoanRepositoryI;
 import com.mercado.domain.repository.TargetRulesRepositoryI;
 import com.mercado.domain.repository.UserRepositoryI;
+import com.mercado.domain.shared.Utils;
 import com.mercado.domain.exceptions.Status;
 
 public class RequestLoanUseCase {
@@ -53,7 +54,7 @@ public class RequestLoanUseCase {
 		Loan loanResponse = loanRepository.requestLoan(loan);
 		ResponseLoan response = new ResponseLoan();
 		response.setLoan_id(loanResponse.getId());
-		response.setInstallment(getLoanByFormule(loan));
+		response.setInstallment(Utils.getLoanByFormule(loan));
 
 		return response;
 	}
@@ -90,14 +91,5 @@ public class RequestLoanUseCase {
 		return targetRule;
 	}
 	
-	/**
-	 * @param loan
-	 * @return
-	 */
-	private double getLoanByFormule(Loan loan) {
-		double rate = loan.getRate() / 12;
-		double value = (rate + rate) / Math.pow((1 + rate), (loan.getTerm() - 1)) * loan.getAmount();
-		return Math.round(value);
-	}
 	
 }

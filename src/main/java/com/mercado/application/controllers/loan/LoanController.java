@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.mercado.domain.models.Loan;
 import com.mercado.domain.models.ResponseLoan;
-import com.mercado.domain.usercase.loan.RequestLoanUseCase;
-import com.mercado.domain.usercase.loan.RetrieveLoansUseCase;
+import com.mercado.domain.usecase.loan.RequestLoanUseCase;
+import com.mercado.domain.usecase.loan.RetrieveLoansUseCase;
 
 @RestController
 public class LoanController {

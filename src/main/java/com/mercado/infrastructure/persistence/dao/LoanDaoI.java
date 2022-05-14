@@ -13,8 +13,8 @@ import com.mercado.infrastructure.persistence.entitites.LoanEntity;
 @Repository
 public interface LoanDaoI extends JpaRepository<LoanEntity, Long>{
 	
-	@Query("SELECT f FROM LoanEntity f WHERE LOWER(f.user_id) = LOWER(:user_id)")
-	List<LoanEntity> findByUserId(@Param("user_id") long user_id);
+	@Query("SELECT f FROM LoanEntity f WHERE LOWER(f.user_id) = LOWER(:user_id) and date > :startDate")
+	List<LoanEntity> findByUserId(@Param("user_id") long user_id, @Param("startDate") Date startDate);
 	
 	@Query("SELECT f FROM LoanEntity f WHERE f.date >= :startDate AND f.date <= :endDate")
 	List<LoanEntity> listLoanByDates(@Param("startDate") Date startDate, @Param("endDate") Date enddate);

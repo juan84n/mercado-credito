@@ -1,4 +1,4 @@
-package com.mercado.domain.usercase.loan;
+package com.mercado.domain.usecase.loan;
 
 import java.util.List;
 

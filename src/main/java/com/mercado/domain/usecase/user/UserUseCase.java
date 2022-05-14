@@ -1,4 +1,4 @@
-package com.mercado.domain.usercase.user;
+package com.mercado.domain.usecase.user;
 
 import com.mercado.domain.models.User;
 import com.mercado.domain.repository.UserRepositoryI;

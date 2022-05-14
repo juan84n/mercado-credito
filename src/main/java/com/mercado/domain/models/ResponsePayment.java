@@ -3,7 +3,7 @@ package com.mercado.domain.models;
 public class ResponsePayment {
 	private long id;
 	private long loan_id;
-	private long debt;
+	private double debt;
 	/**
 	 * @return the id
 	 */
@@ -31,13 +31,13 @@ public class ResponsePayment {
 	/**
 	 * @return the debt
 	 */
-	public long getDebt() {
+	public double getDebt() {
 		return debt;
 	}
 	/**
 	 * @param debt the debt to set
 	 */
-	public void setDebt(long debt) {
+	public void setDebt(double debt) {
 		this.debt = debt;
 	}
 	

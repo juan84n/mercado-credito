@@ -2,6 +2,7 @@ package com.mercado.infrastructure.adapters.loan;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -72,9 +73,22 @@ public class LoanAdapter implements LoanRepositoryI {
 
 	@Override
 	public List<Loan> getLoansByUser(long user_id) {
-		return loanDao.findByUserId(user_id).stream()
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.YEAR, -1);
+		java.sql.Date prevYear = new java.sql.Date(cal.getTime().getTime());
+		return loanDao.findByUserId(user_id, prevYear).stream()
 				.map(LoanTransformer::loanEntityToLoan)
 				.collect(Collectors.toList());
+	}
+
+	@Override
+	public Loan getLoanById(long loan_id) {
+		LoanEntity loanEntity = loanDao.getById(loan_id);
+		if(loanEntity.getId() == 0) {
+			throw new BusinessException(Status.NOT_FOUND.getCode(), "El préstamo con id " + loan_id + " no existe");
+		}
+		
+		return LoanTransformer.loanEntityToLoan(loanEntity);
 	}
 
 }

@@ -10,4 +10,5 @@ public interface LoanRepositoryI {
 	public List<Loan> listLoan(String startDate, String endDate);
 	public ResponseDebt getDebt(String endDate, long loan_id);
 	public List<Loan> getLoansByUser(long user_id);
+	public Loan getLoanById(long loan_id);
 }
