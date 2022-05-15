@@ -1,0 +1,11 @@
+version: '3'
+services:
+    mercadocredito:
+        ports:
+            - "8080:8080"
+        build:
+            context: .
+            dockerfile: Dockerfile
+        restart: always
+        volumes: 
+          - ./app:/home

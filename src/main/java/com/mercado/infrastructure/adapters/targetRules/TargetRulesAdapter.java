@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.mercado.domain.models.TargetRules;
 import com.mercado.domain.repository.TargetRulesRepositoryI;
 import com.mercado.infrastructure.persistence.dao.TargetRulesDaoI;
+import com.mercado.infrastructure.persistence.entitites.TargetRulesEntity;
 
 @Service
 public class TargetRulesAdapter implements TargetRulesRepositoryI {
@@ -29,6 +30,20 @@ public class TargetRulesAdapter implements TargetRulesRepositoryI {
 				.map(TargetRulesTransformer::TargetRulesEntityToTargetRules)
 			    .collect(Collectors.toList());
 				
+	}
+
+	@Override
+	public TargetRules updateRules(TargetRules targetRules) {
+		
+		TargetRulesEntity targetRulesEntity = this.targetRulesDao.findByType(targetRules.getType());
+		targetRulesEntity.setMaxAmount(targetRules.getMaxAmount());
+		targetRulesEntity.setMaxCant(targetRules.getMaxCant());
+		targetRulesEntity.setMaxLoan(targetRules.getMaxLoan());
+		targetRulesEntity.setMinAmount(targetRules.getMaxAmount());
+		targetRulesEntity.setMinCant(targetRules.getMinCant());
+		targetRulesEntity.setRate(targetRules.getRate());
+		
+		return TargetRulesTransformer.TargetRulesEntityToTargetRules(targetRulesDao.save(targetRulesEntity));
 	}
 
 }

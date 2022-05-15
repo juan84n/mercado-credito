@@ -8,4 +8,6 @@ import com.mercado.infrastructure.persistence.entitites.TargetRulesEntity;
 @Repository
 public interface TargetRulesDaoI  extends CrudRepository<TargetRulesEntity, Long> {
 
+	TargetRulesEntity findByType(String type);
+
 }

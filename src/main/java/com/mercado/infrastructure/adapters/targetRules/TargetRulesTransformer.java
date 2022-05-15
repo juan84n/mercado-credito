@@ -18,4 +18,18 @@ public class TargetRulesTransformer {
 		
 		return targetRules;
 	}
+	
+	public static TargetRulesEntity TargetRulesToTargetRulesEntity(TargetRules targetRules) {
+		
+		TargetRulesEntity targetRulesEntity = new TargetRulesEntity();
+		targetRulesEntity.setMaxAmount(targetRules.getMaxAmount());
+		targetRulesEntity.setMaxCant(targetRules.getMaxCant());
+		targetRulesEntity.setMaxLoan(targetRules.getMaxLoan());
+		targetRulesEntity.setMinAmount(targetRules.getMinAmount());
+		targetRulesEntity.setMinCant(targetRules.getMinCant());
+		targetRulesEntity.setRate(targetRules.getRate());
+		targetRulesEntity.setType(targetRules.getType());
+		
+		return targetRulesEntity;
+	}
 }

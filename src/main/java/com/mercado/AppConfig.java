@@ -13,6 +13,7 @@ import com.mercado.domain.usecase.loan.RetrieveLoansUseCase;
 import com.mercado.domain.usecase.payment.GetBalanceUseCase;
 import com.mercado.domain.usecase.payment.RegisterPaymentUseCase;
 import com.mercado.domain.usecase.targetRules.GetTargetRulesUseCase;
+import com.mercado.domain.usecase.targetRules.UpdateTargetRulesUseCase;
 
 @Configuration
 public class AppConfig {
@@ -42,6 +43,11 @@ public class AppConfig {
     @Bean
     public GetTargetRulesUseCase getTargetRulesUseCase() {
         return new GetTargetRulesUseCase(targetRulesRepository);
+    }
+    
+    @Bean
+    public UpdateTargetRulesUseCase updateTargetRulesUseCase() {
+        return new UpdateTargetRulesUseCase(targetRulesRepository);
     }
     
     @Bean

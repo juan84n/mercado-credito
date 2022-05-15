@@ -7,10 +7,14 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mercado.domain.exceptions.BusinessException;
+import com.mercado.domain.exceptions.Status;
+import com.mercado.domain.models.Balance;
 import com.mercado.domain.models.Payment;
 import com.mercado.domain.models.ResponsePayment;
 import com.mercado.domain.repository.PaymentRepositoryI;
 import com.mercado.infrastructure.persistence.dao.PaymentDaoI;
+import com.mercado.infrastructure.persistence.entitites.BalanceEntity;
 import com.mercado.infrastructure.persistence.entitites.PaymentEntity;
 
 @Service
@@ -46,17 +50,51 @@ public class PaymentAdapter implements PaymentRepositoryI {
 
 
 	@Override
-	public double getTotalPaymentByLoanId(long loan_id, Timestamp date) {
-		return this.paymentDao.getBalanceByLoanId(loan_id, date)
-				.orElse((double)0);
+	public Balance getPaymentsByLoanId(long loan_id, Timestamp date) {
+		List<BalanceEntity> listBalance = paymentDao.getPaymentsByLoanId(loan_id, date);
+		if(listBalance.size() == 0) {
+			throw new BusinessException(Status.NOT_FOUND.getCode(), "No hubo resultados");
+		}
+		Balance balance  = BalanceTransfomer.balanceEntityToBalance(paymentDao.getPaymentsByLoanId(loan_id, date).get(0));
+		return balance;
 	}
 
 
 	@Override
-	public double getBalanceByTarget(String target, Timestamp date) {
-		// TODO Auto-generated method stub
-		return 0;
+	public List<Balance> getBalanceByTargetOrDate(String target, Timestamp date) {
+		
+		boolean isDate = date != null;
+		boolean isTarget = target != null && !target.equals("");
+		
+		List<BalanceEntity> listBalance = null;
+				
+		if(isDate && !isTarget) {
+			listBalance = paymentDao.getPaymentsByDate(date);
+			if(listBalance.size() == 0) {
+				throw new BusinessException(Status.NOT_FOUND.getCode(), "No hubo resultados");
+			}
+			
+		}
+		
+		if(isTarget && !isDate) {
+			listBalance = paymentDao.getPaymentsByTarget(target);
+			if(listBalance.size() == 0) {
+				throw new BusinessException(Status.NOT_FOUND.getCode(), "No hubo resultados");
+			}
+			
+		}
+		
+		if(isTarget && isDate) {
+			listBalance = paymentDao.getPaymentsByTargetAndDate(target, date);
+			if(listBalance.size() == 0) {
+				throw new BusinessException(Status.NOT_FOUND.getCode(), "No hubo resultados");
+			}
+			
+			
+		}
+		
+		return listBalance.stream().map(BalanceTransfomer::balanceEntityToBalance)
+				.collect(Collectors.toList());
 	}
-
-
+	
 }
