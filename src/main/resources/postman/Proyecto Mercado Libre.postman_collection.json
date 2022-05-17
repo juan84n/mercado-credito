@@ -1,0 +1,212 @@
+{
+	"info": {
+		"_postman_id": "3bb61742-dc28-43fa-8451-8bed2faffbbc",
+		"name": "Proyecto Mercado Libre",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/request-loan",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\": 1000,\n    \"term\": 12,\n    \"user_id\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/request-loan",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"request-loan"
+					]
+				},
+				"description": "EndPoint para solicitar prestamos"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/list-loan",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/list-loan",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"list-loan"
+					]
+				},
+				"description": "Listar todos los préstamos"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/list-loan?startDate=2022-05-13&endDate=2022-05-13",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/list-loan?startDate=2022-05-13&endDate=2022-05-16",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"list-loan"
+					],
+					"query": [
+						{
+							"key": "startDate",
+							"value": "2022-05-13"
+						},
+						{
+							"key": "endDate",
+							"value": "2022-05-16"
+						}
+					]
+				},
+				"description": "Listar los préstamos filtrados por fecha"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/register-payment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\": \"100\",\n    \"loan\": {\n        \"id\": \"1\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/register-payment",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"register-payment"
+					]
+				},
+				"description": "Registrar un pago hacía un préstamo en concreto"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/loan-balance?loan_id=1&endDate=2022-05-13",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/loan-balance?loan_id=1&endDate=2022-05-17",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"loan-balance"
+					],
+					"query": [
+						{
+							"key": "loan_id",
+							"value": "1"
+						},
+						{
+							"key": "endDate",
+							"value": "2022-05-17"
+						}
+					]
+				},
+				"description": "Obtener la deuda por préstamo"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/all-loan-balance?endDate=2022-05-17",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/all-loan-balance?endDate=2022-05-17",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"all-loan-balance"
+					],
+					"query": [
+						{
+							"key": "endDate",
+							"value": "2022-05-17"
+						},
+						{
+							"key": "target",
+							"value": "FREQUENT",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Actualizar reglas de negocio"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/update-target-rules",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"minAmount\": 0,\n\t\"maxAmount\": 100000,\n\t\"minCant\": 0,\n\t\"maxCant\": 2,\n\t\"type\": \"NEW\",\n\t\"rate\": 0.50,\n\t\"maxLoan\": \"500000\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/update-target-rules",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"update-target-rules"
+					]
+				},
+				"description": "Actualizar las reglas"
+			},
+			"response": []
+		}
+	]
+}

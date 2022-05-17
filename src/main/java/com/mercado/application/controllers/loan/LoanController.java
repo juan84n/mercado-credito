@@ -17,6 +17,13 @@ import com.mercado.domain.models.ResponseLoan;
 import com.mercado.domain.usecase.loan.RequestLoanUseCase;
 import com.mercado.domain.usecase.loan.RetrieveLoansUseCase;
 
+/**
+ * @author juanfelipenarvaez
+ * 
+ * Controlador encargado de recibir las 
+ * peticiones para los prestamos
+ *
+ */
 @RestController
 public class LoanController {
 	
@@ -26,11 +33,26 @@ public class LoanController {
 	@Autowired
 	RetrieveLoansUseCase retrieveLoansUseCase;
 	
+	/**
+	 * 
+	 * Petición de préstamo
+	 * 
+	 * @param loan
+	 * @return
+	 */
 	@PostMapping(value = "/request-loan")
 	public ResponseEntity<ResponseLoan> requestLoan(@RequestBody Loan loan) {
 		return ResponseEntity.accepted().body(loanUseCase.requestLoan(loan));
 	}
 	
+	/**
+	 * 
+	 * Obtener los préstamos ya sea filtrado por fechas o no
+	 * 
+	 * @param startDate
+	 * @param endDate
+	 * @return
+	 */
 	@GetMapping(value= "/list-loan")
 	public ResponseEntity<List<Loan>> listLoan(@RequestParam(required=false, defaultValue="") String startDate,
 			@RequestParam(required=false, defaultValue="") String endDate ) {

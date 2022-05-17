@@ -17,6 +17,12 @@ import com.mercado.domain.repository.UserRepositoryI;
 import com.mercado.domain.shared.Utils;
 import com.mercado.domain.exceptions.Status;
 
+/**
+ * @author juanfelipenarvaez
+ * 
+ * Caso de uso del dominio para manejar las peticion de un préstamo
+ *
+ */
 public class RequestLoanUseCase {
 	
 	private LoanRepositoryI loanRepository;
@@ -31,6 +37,9 @@ public class RequestLoanUseCase {
 	
 	
 	/**
+	 * 
+	 * Solicitar un préstamo
+	 * 
 	 * @param loan
 	 * @return
 	 */
@@ -66,6 +75,9 @@ public class RequestLoanUseCase {
 	}
 	
 	/**
+	 * 
+	 * Obtener las reglas
+	 * 
 	 * @param loans
 	 * @param loan
 	 * @return
@@ -81,6 +93,15 @@ public class RequestLoanUseCase {
 		return targetRule;
 	}
 	
+	/**
+	 * 
+	 * Saber a que target pertenece el préstamo
+	 * 
+	 * @param rule
+	 * @param loan
+	 * @param loans
+	 * @return
+	 */
 	private boolean getRulesByTarget(TargetRules rule, Loan loan, List<Loan> loans) {
 		
 		/*Se le suma 1 la cantidad ya que el préstamo que se esta solicitando hace parte a cantidad de préstamos pedidos*/

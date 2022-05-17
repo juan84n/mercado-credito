@@ -10,9 +10,22 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.mercado.domain.exceptions.BusinessException;
 
+/**
+ * @author juanfelipenarvaez
+ * 
+ *  Controlador que intercepta las excepciones
+ *
+ */
 @RestControllerAdvice
 public class ControllerAdvice {
 
+	/**
+	 * 
+	 * Interceptor de BusinessException
+	 * @param request
+	 * @param rexc
+	 * @return
+	 */
 	@ExceptionHandler(value = BusinessException.class)
 	public ResponseEntity<BusinessError> businessHandler(HttpServletRequest request, BusinessException rexc) {
 		
@@ -22,6 +35,14 @@ public class ControllerAdvice {
 		
 	}
 	
+	/**
+	 * 
+	 * Interceptor de RuntimeException
+	 * 
+	 * @param request
+	 * @param rexc
+	 * @return
+	 */
 	@ExceptionHandler(value = RuntimeException.class)
 	public ResponseEntity<BusinessError> runtimeErrorHandler(HttpServletRequest request, RuntimeException rexc) {
 
@@ -30,6 +51,14 @@ public class ControllerAdvice {
 		
 	}
 	
+	/**
+	 * 
+	 * Interceptor de EntityNotFoundException
+	 * 
+	 * @param request
+	 * @param rexc
+	 * @return
+	 */
 	@ExceptionHandler(value = EntityNotFoundException.class)
 	public ResponseEntity<BusinessError> entityNotFoundHandler(HttpServletRequest request, EntityNotFoundException rexc) {
 

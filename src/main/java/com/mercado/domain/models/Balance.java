@@ -1,5 +1,11 @@
 package com.mercado.domain.models;
 
+/**
+ * @author juanfelipenarvaez
+ * 
+ * Modelo de dominio para obtener el balance
+ *
+ */
 public class Balance {
 	
 	private Double payments;

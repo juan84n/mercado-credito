@@ -1,5 +1,11 @@
 package com.mercado.domain.exceptions;
 
+/**
+ * @author juanfelipenarvaez
+ * 
+ * Clase para el manejo de excepciones de negocio
+ *
+ */
 public class BusinessException extends RuntimeException {
 	
 	private static final long serialVersionUID = 1L;

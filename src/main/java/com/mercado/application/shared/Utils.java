@@ -10,6 +10,13 @@ import com.mercado.domain.exceptions.Status;
 
 public class Utils {
 	
+	/**
+	 * 
+	 * Convertir de string a timestamp
+	 * 
+	 * @param date
+	 * @return
+	 */
 	public static Timestamp stringToTimestamp(String date) {
 		boolean isValidFormat = date.matches("([0-9]{4})-([0-9]{2})-([0-9]{2})");
 		if(!isValidFormat) {

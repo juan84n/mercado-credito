@@ -14,6 +14,7 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import com.mercado.domain.exceptions.BusinessException;
 import com.mercado.domain.models.Loan;
 import com.mercado.domain.models.Payment;
 import com.mercado.domain.models.ResponsePayment;
@@ -32,12 +33,13 @@ public class RegisterPaymentUseCaseTest {
 	LoanRepositoryI loanRepository;
 	
 	Payment payment = new Payment();
+	Loan loan = new Loan();
+	List<Payment> listPayments = new ArrayList<>();
 	
 	@BeforeEach
 	public void beforeEach() {
 		MockitoAnnotations.openMocks(this);
 		registerPaymentUseCase = new RegisterPaymentUseCase(paymentRepository, loanRepository);
-		Loan loan = new Loan();
 		
 		loan.setAmount(1000);
 		loan.setDate(null);
@@ -58,8 +60,6 @@ public class RegisterPaymentUseCaseTest {
 		responsePayment.setDebt(50);
 		responsePayment.setId(1);
 		responsePayment.setLoan_id(loan.getId());
-		
-		List<Payment> listPayments = new ArrayList<>();
 		
 		listPayments.add(payment);
 		
@@ -90,4 +90,36 @@ public class RegisterPaymentUseCaseTest {
 		
 	}
 
+	@Test
+	public void registerPaymentAlreadyPayed() {
+		payment.setAmount(900);
+		payment.setDate(null);
+		payment.setId(1);
+		payment.setMissingAmount(0);
+		payment.setLoan(loan);
+		try {
+			this.registerPaymentUseCase.registerPayment(payment);
+		}
+		catch(BusinessException bx) {
+			assertEquals(bx.getMessage(), "La deuda ya fue pagada");
+		}
+		
+	}
+	
+	@Test
+	public void registerPaymentPayOverLoan() {
+		Payment payment2 = new Payment();
+		payment2.setAmount(2000);
+		payment2.setDate(null);
+		payment2.setId(1);
+		payment2.setMissingAmount(0);
+		payment2.setLoan(loan);
+		try {
+			this.registerPaymentUseCase.registerPayment(payment2);
+		}
+		catch(BusinessException bx) {
+			assertEquals(bx.getMessage(), "Este pago sobrepasa el monto de la deuda");
+		}
+		
+	}
 }

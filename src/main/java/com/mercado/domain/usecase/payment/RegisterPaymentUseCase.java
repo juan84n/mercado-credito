@@ -31,7 +31,7 @@ public class RegisterPaymentUseCase {
 		if(totalAmount >= loan.getAmount()) {
 			throw new BusinessException(Status.BAD_REQUEST.getCode(), "La deuda ya fue pagada");
 		}
-		
+				
 		payments.sort((a, b) -> {
 			return b.getDate().compareTo(a.getDate());
 		});
@@ -44,7 +44,7 @@ public class RegisterPaymentUseCase {
 		double totalPayed = totalAmount + this.checkPayment(payment, installment, lastPayment, loan);;
 		double debt = loan.getAmount() - totalPayed;
 		
-		if(debt > loan.getAmount()) {
+		if(payment.getAmount() >= loan.getAmount() || debt > loan.getAmount()) {
 			throw new BusinessException(Status.BAD_REQUEST.getCode(), "Este pago sobrepasa el monto de la deuda");
 		}
 		

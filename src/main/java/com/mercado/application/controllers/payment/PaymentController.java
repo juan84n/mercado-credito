@@ -17,6 +17,12 @@ import com.mercado.domain.models.ResponsePayment;
 import com.mercado.domain.usecase.payment.GetBalanceUseCase;
 import com.mercado.domain.usecase.payment.RegisterPaymentUseCase;
 
+/**
+ * @author juanfelipenarvaez
+ *
+ * Controlador que recibe las peticiones de los pagos
+ *
+ */
 @RestController
 public class PaymentController {
 
@@ -27,11 +33,26 @@ public class PaymentController {
 	private GetBalanceUseCase getBalanceUseCase;
 	
 	
+	/**
+	 * 
+	 * Endpoint que recibe un pago
+	 * 
+	 * @param payment
+	 * @return
+	 */
 	@PostMapping(value="/register-payment")
 	public ResponseEntity<ResponsePayment> registerPayment(@RequestBody Payment payment) {
 		return ResponseEntity.accepted().body(registerPaymentUseCase.registerPayment(payment));
 	}
 	
+	/**
+	 * 
+	 * Endpoint que devuelve todos los pagos de un préstamo
+	 * 
+	 * @param loan_id
+	 * @param endDate
+	 * @return
+	 */
 	@GetMapping(value="/loan-balance", produces = "application/json")
 	@ResponseBody
 	public ResponseEntity<String> loanBalance(@RequestParam long loan_id, @RequestParam String endDate ){
@@ -41,6 +62,14 @@ public class PaymentController {
 		
 	}
 	
+	/**
+	 * 
+	 * Endpoint que devuelve todos los pagos filtrados por fecha o sin filtrar
+	 * 
+	 * @param target
+	 * @param endDate
+	 * @return
+	 */
 	@GetMapping(value="/all-loan-balance", produces = "application/json")
 	@ResponseBody
 	public ResponseEntity<String> listLoansBalance(@RequestParam(required=false) String target,
