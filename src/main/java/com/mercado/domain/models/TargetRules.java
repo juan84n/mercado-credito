@@ -10,6 +10,23 @@ public class TargetRules {
 	private long maxLoan;
 	
 
+	public TargetRules(int minAmount, int maxAmount, int minCant, int maxCant, String type, double rate, long maxLoan) {
+		this.minAmount = minAmount;
+		this.maxAmount = maxAmount;
+		this.minCant = minCant;
+		this.maxCant = maxCant;
+		this.type = type;
+		this.rate = rate;
+		this.maxLoan = maxLoan;
+	}
+	
+	
+
+	public TargetRules() {
+
+	}
+
+
 	/**
 	 * @return the minAmount
 	 */

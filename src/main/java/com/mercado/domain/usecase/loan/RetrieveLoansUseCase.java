@@ -1,5 +1,6 @@
 package com.mercado.domain.usecase.loan;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import com.mercado.domain.models.Loan;
@@ -15,7 +16,7 @@ public class RetrieveLoansUseCase {
 		this.loanRepository = loanRepository;
 	}
 
-	public List<Loan> findAllLoan(String startDate, String endDate){
+	public List<Loan> findAllLoan(Timestamp startDate, Timestamp endDate){
 		return loanRepository.listLoan(startDate, endDate);
 	}
 }

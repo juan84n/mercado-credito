@@ -51,11 +51,11 @@ public class PaymentAdapter implements PaymentRepositoryI {
 
 	@Override
 	public Balance getPaymentsByLoanId(long loan_id, Timestamp date) {
-		List<BalanceEntity> listBalance = paymentDao.getPaymentsByLoanId(loan_id, date);
-		if(listBalance.size() == 0) {
+		List<BalanceEntity> balanceEntity = paymentDao.getPaymentsByLoanId(loan_id, date);
+		if(balanceEntity.size() == 0) {
 			throw new BusinessException(Status.NOT_FOUND.getCode(), "No hubo resultados");
 		}
-		Balance balance  = BalanceTransfomer.balanceEntityToBalance(paymentDao.getPaymentsByLoanId(loan_id, date).get(0));
+		Balance balance  = BalanceTransfomer.balanceEntityToBalance(balanceEntity.get(0));
 		return balance;
 	}
 

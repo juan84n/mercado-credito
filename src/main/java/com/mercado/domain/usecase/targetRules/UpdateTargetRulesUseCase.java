@@ -1,4 +1,4 @@
-package com.mercado.domain.usecase.targetRules;
+package com.mercado.domain.usecase.targetrules;
 
 import com.mercado.domain.exceptions.BusinessException;
 import com.mercado.domain.exceptions.Status;

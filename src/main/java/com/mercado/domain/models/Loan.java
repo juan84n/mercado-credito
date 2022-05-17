@@ -1,5 +1,6 @@
 package com.mercado.domain.models;
 
+import java.sql.Timestamp;
 
 public class Loan {
 	
@@ -9,7 +10,7 @@ public class Loan {
 	private double rate;
 	private long user_id;
 	private String target;
-	private String date;
+	private Timestamp date;
 	
 	
 	/**
@@ -27,13 +28,13 @@ public class Loan {
 	/**
 	 * @return the date
 	 */
-	public String getDate() {
+	public Timestamp getDate() {
 		return date;
 	}
 	/**
 	 * @param date the date to set
 	 */
-	public void setDate(String date) {
+	public void setDate(Timestamp date) {
 		this.date = date;
 	}
 	/**

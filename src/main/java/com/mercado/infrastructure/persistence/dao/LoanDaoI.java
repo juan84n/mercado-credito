@@ -1,6 +1,6 @@
 package com.mercado.infrastructure.persistence.dao;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,8 +14,8 @@ import com.mercado.infrastructure.persistence.entitites.LoanEntity;
 public interface LoanDaoI extends JpaRepository<LoanEntity, Long>{
 	
 	@Query("SELECT f FROM LoanEntity f WHERE LOWER(f.user_id) = LOWER(:user_id) and date > :startDate")
-	List<LoanEntity> findByUserId(@Param("user_id") long user_id, @Param("startDate") Date startDate);
+	List<LoanEntity> findByUserId(@Param("user_id") long user_id, @Param("startDate") Timestamp startDate);
 	
 	@Query("SELECT f FROM LoanEntity f WHERE f.date >= :startDate AND f.date <= :endDate")
-	List<LoanEntity> listLoanByDates(@Param("startDate") Date startDate, @Param("endDate") Date enddate);
+	List<LoanEntity> listLoanByDates(@Param("startDate") Timestamp startDate, @Param("endDate") Timestamp enddate);
 }

@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mercado.application.shared.Utils;
 import com.mercado.domain.models.Payment;
 import com.mercado.domain.models.ResponsePayment;
 import com.mercado.domain.usecase.payment.GetBalanceUseCase;
 import com.mercado.domain.usecase.payment.RegisterPaymentUseCase;
-import com.mercado.infrastructure.shared.Utils;
 
 @RestController
 public class PaymentController {

@@ -2,6 +2,7 @@ package com.mercado;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import com.mercado.domain.repository.LoanRepositoryI;
@@ -12,10 +13,11 @@ import com.mercado.domain.usecase.loan.RequestLoanUseCase;
 import com.mercado.domain.usecase.loan.RetrieveLoansUseCase;
 import com.mercado.domain.usecase.payment.GetBalanceUseCase;
 import com.mercado.domain.usecase.payment.RegisterPaymentUseCase;
-import com.mercado.domain.usecase.targetRules.GetTargetRulesUseCase;
-import com.mercado.domain.usecase.targetRules.UpdateTargetRulesUseCase;
+import com.mercado.domain.usecase.targetrules.GetTargetRulesUseCase;
+import com.mercado.domain.usecase.targetrules.UpdateTargetRulesUseCase;
 
 @Configuration
+@ComponentScan("com.mercadeo")
 public class AppConfig {
 	
 	@Autowired
@@ -57,7 +59,7 @@ public class AppConfig {
     
     @Bean
     public GetBalanceUseCase getBalanceUseCase() {
-        return new GetBalanceUseCase(paymentRepository, loanRepository);
+        return new GetBalanceUseCase(paymentRepository);
     }
     
 }

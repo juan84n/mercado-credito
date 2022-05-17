@@ -1,5 +1,6 @@
 package com.mercado.application.exceptions;
 
+import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,14 @@ public class ControllerAdvice {
 
         BusinessError errorInfo = new BusinessError(HttpStatus.BAD_REQUEST.value(), rexc.getMessage(), request.getRequestURI());
         return new ResponseEntity<>(errorInfo, HttpStatus.BAD_REQUEST);
+		
+	}
+	
+	@ExceptionHandler(value = EntityNotFoundException.class)
+	public ResponseEntity<BusinessError> entityNotFoundHandler(HttpServletRequest request, EntityNotFoundException rexc) {
+
+        BusinessError errorInfo = new BusinessError(HttpStatus.NOT_FOUND.value(), "No se encontraron resultados", request.getRequestURI());
+        return new ResponseEntity<>(errorInfo, HttpStatus.NOT_FOUND);
 		
 	}
 }

@@ -1,7 +1,7 @@
 package com.mercado.infrastructure.persistence.entitites;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,8 +24,8 @@ public class LoanEntity implements Serializable {
 	private double rate;
 	private long user_id;
 	private int term;
-	@Column(name="DATE", columnDefinition="date")
-	private Date date;
+	@Column(name="DATE", columnDefinition="timestamp")
+	private Timestamp date;
 	private String target;
 	
 	
@@ -60,10 +60,10 @@ public class LoanEntity implements Serializable {
 	public void setTerm(int term) {
 		this.term = term;
 	}
-	public Date getDate() {
+	public Timestamp getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(Timestamp date) {
 		this.date = date;
 	}
 	public String getTarget() {

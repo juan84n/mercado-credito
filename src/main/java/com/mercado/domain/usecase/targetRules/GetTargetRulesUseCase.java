@@ -1,4 +1,4 @@
-package com.mercado.domain.usecase.targetRules;
+package com.mercado.domain.usecase.targetrules;
 
 import com.mercado.domain.models.TargetRules;
 import com.mercado.domain.repository.TargetRulesRepositoryI;

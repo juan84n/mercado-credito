@@ -1,4 +1,4 @@
-package com.mercado.application.controllers.targetRules;
+package com.mercado.application.controllers.targetrules;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mercado.domain.models.TargetRules;
-import com.mercado.domain.usecase.targetRules.UpdateTargetRulesUseCase;
+import com.mercado.domain.usecase.targetrules.UpdateTargetRulesUseCase;
 
 @RestController
 public class TargetRulesController {
