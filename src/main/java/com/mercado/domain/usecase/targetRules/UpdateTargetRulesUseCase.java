@@ -18,7 +18,7 @@ public class UpdateTargetRulesUseCase {
 				!targetRules.getType().equals(UserEnum.FREQUENT.getTarget()) && 
 				!targetRules.getType().equals(UserEnum.PREMIUM.getTarget())) {
 			
-			throw new BusinessException(Status.BAD_REQUEST.getCode(), "No se puede motificar el typo debe ser (NEW, FREQUENT o PREMIUM)");
+			throw new BusinessException(Status.BAD_REQUEST.getCode(), "No se puede motificar el tipo debe ser (NEW, FREQUENT o PREMIUM)");
 		}
 		
 		if((targetRules.getMaxAmount() < targetRules.getMinAmount())) {

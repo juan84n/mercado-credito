@@ -2,26 +2,26 @@ package com.mercado.domain.models;
 
 public class Balance {
 	
-	private double payments;
+	private Double payments;
 	private Loan loan;	
 	
 	public Balance() {
 	}
 	
-	public Balance(long payments, Loan loan) {
+	public Balance(Double payments, Loan loan) {
 		this.payments = payments;
 		this.loan = loan;
 	}
 	/**
 	 * @return the payments
 	 */
-	public double getPayments() {
+	public Double getPayments() {
 		return payments;
 	}
 	/**
 	 * @param payments the payments to set
 	 */
-	public void setPayments(double payments) {
+	public void setPayments(Double payments) {
 		this.payments = payments;
 	}
 	/**

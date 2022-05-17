@@ -2,28 +2,36 @@ package com.mercado.infrastructure.persistence.entitites;
 
 
 public class BalanceEntity {
-	private double payments;
+	private Double payments;
 	private LoanEntity loan;
 		
 	public BalanceEntity() {
 
 	}
 	
-	public BalanceEntity(double payments, LoanEntity loan) {
-		this.payments = payments;
+	public BalanceEntity(Double payments, LoanEntity loan) {
+		if(payments == null ) {
+			this.payments = 0.0;
+		}else {
+			this.payments = payments;	
+		}
 		this.loan = loan;
 	}
 	/**
 	 * @return the payments
 	 */
-	public double getPayments() {
+	public Double getPayments() {
 		return payments;
 	}
 	/**
 	 * @param payments the payments to set
 	 */
-	public void setPayments(double payments) {
-		this.payments = payments;
+	public void setPayments(Double payments) {
+		if(payments == null ) {
+			this.payments = 0.0;
+		}else {
+			this.payments = payments;	
+		}
 	}
 	/**
 	 * @return the loan

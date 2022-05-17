@@ -13,6 +13,8 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import com.mercado.domain.exceptions.BusinessException;
+import com.mercado.domain.exceptions.Status;
 import com.mercado.domain.models.Loan;
 import com.mercado.domain.models.TargetRules;
 import com.mercado.domain.models.User;
@@ -76,6 +78,17 @@ public class RequestLoanUseCaseTest {
 	public void requestLoan() {
 		assertEquals(this.requestLoanUseCase.requestLoan(loan).getInstallment(), 22,0);
 		
+	}
+	
+	@Test
+	public void requestLoanAmountHigher() {
+		loan.setAmount(1000);
+		try {
+			this.requestLoanUseCase.requestLoan(loan).getInstallment();
+		}
+		catch(BusinessException ex) {
+			assertEquals(ex.getCode(), Status.BAD_REQUEST);
+		}	
 	}
 	
 	private List<TargetRules> initRules() {
