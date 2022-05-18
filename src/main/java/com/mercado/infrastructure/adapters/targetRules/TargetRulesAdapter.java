@@ -12,18 +12,38 @@ import com.mercado.domain.repository.TargetRulesRepositoryI;
 import com.mercado.infrastructure.persistence.dao.TargetRulesDaoI;
 import com.mercado.infrastructure.persistence.entitites.TargetRulesEntity;
 
+/**
+ * @author juanfelipenarvaez
+ * 
+ * Adaptador que implementa el repositorio del dominio de target rules
+ *
+ */
 @Service
 public class TargetRulesAdapter implements TargetRulesRepositoryI {
 	
 	@Autowired
 	TargetRulesDaoI targetRulesDao;
 
+	/**
+	 * 
+	 * Implementación de repo para obtener las reglas por tipo
+	 *@Param 
+	 *@return 
+	 *
+	 */
 	@Override
 	public TargetRules getRulesByType(String type) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * 
+	 * Implementación de repo para obtener todas las reglas
+	 *@Param 
+	 *@return 
+	 *
+	 */
 	@Override
 	public List<TargetRules> listRules() {
 		return StreamSupport.stream(this.targetRulesDao.findAll().spliterator(), false)
@@ -32,6 +52,13 @@ public class TargetRulesAdapter implements TargetRulesRepositoryI {
 				
 	}
 
+	/**
+	 * 
+	 * Implementación de repo para actualizar las reglas
+	 *@Param 
+	 *@return 
+	 *
+	 */
 	@Override
 	public TargetRules updateRules(TargetRules targetRules) {
 		

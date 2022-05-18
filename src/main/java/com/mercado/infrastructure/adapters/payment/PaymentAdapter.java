@@ -17,6 +17,12 @@ import com.mercado.infrastructure.persistence.dao.PaymentDaoI;
 import com.mercado.infrastructure.persistence.entitites.BalanceEntity;
 import com.mercado.infrastructure.persistence.entitites.PaymentEntity;
 
+/**
+ * @author juanfelipenarvaez
+ * 
+ * Adaptador que implementa el repositorio del dominio de pagos
+ *
+ */
 @Service
 public class PaymentAdapter implements PaymentRepositoryI {
 
@@ -24,6 +30,13 @@ public class PaymentAdapter implements PaymentRepositoryI {
 	PaymentDaoI paymentDao;
 	
 	
+	/**
+	 * 
+	 * Implementación de repo para hacer un pago
+	 *@Param 
+	 *@return 
+	 *
+	 */
 	@Override
 	public ResponsePayment doPayment(Payment payment, double debt) {
 		
@@ -39,7 +52,13 @@ public class PaymentAdapter implements PaymentRepositoryI {
 		return response;
 	}
 
-
+	/**
+	 * 
+	 * Implementación de repo para hacer un pago
+	 *@Param 
+	 *@return 
+	 *
+	 */
 	@Override
 	public List<Payment> getListPayments(long loan_id) {
 		return this.paymentDao.getListPaymentsByLoanId(loan_id)
@@ -49,6 +68,13 @@ public class PaymentAdapter implements PaymentRepositoryI {
 	}
 
 
+	/**
+	 * 
+	 * Implementación de repo para obtener pagos por id de préstamo
+	 *@Param 
+	 *@return 
+	 *
+	 */
 	@Override
 	public Balance getPaymentsByLoanId(long loan_id, Timestamp date) {
 		List<BalanceEntity> balanceEntity = paymentDao.getPaymentsByLoanId(loan_id, date);
@@ -59,7 +85,13 @@ public class PaymentAdapter implements PaymentRepositoryI {
 		return balance;
 	}
 
-
+	/**
+	 * 
+	 * Implementación de repo para obtener un balance por target o fecha
+	 *@Param 
+	 *@return 
+	 *
+	 */
 	@Override
 	public List<Balance> getBalanceByTargetOrDate(String target, Timestamp date) {
 		

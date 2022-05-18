@@ -12,6 +12,12 @@ import com.mercado.domain.repository.LoanRepositoryI;
 import com.mercado.domain.repository.PaymentRepositoryI;
 import com.mercado.domain.shared.Utils;
 
+/**
+ * @author juanfelipenarvaez
+ * 
+ * Caso de uso para registrar un pago
+ *
+ */
 public class RegisterPaymentUseCase {
 	
 	private PaymentRepositoryI paymentRepository;
@@ -22,6 +28,13 @@ public class RegisterPaymentUseCase {
 		this.loanRepository = loanRepository;
 	}
 	
+	/**
+	 * 
+	 * registrar un pago
+	 * 
+	 * @param payment
+	 * @return
+	 */
 	public ResponsePayment registerPayment(Payment payment) {
 		Loan loan = this.loanRepository.getLoanById(payment.getLoan().getId());
 		List<Payment> payments = this.paymentRepository.getListPayments(payment.getLoan().getId());
@@ -53,6 +66,16 @@ public class RegisterPaymentUseCase {
 		return this.paymentRepository.doPayment(payment, debt);
 	}
 	
+	/**
+	 * 
+	 * Verificar si al realizar un pago ya tenía pagos pendientes del pago anterior
+	 * 
+	 * @param payment
+	 * @param installment
+	 * @param lastPayment
+	 * @param loan
+	 * @return
+	 */
 	private double checkPayment(Payment payment, double installment, Payment lastPayment, Loan loan) {
 		
 		if(lastPayment != null && lastPayment.getMissingAmount() > 0) {

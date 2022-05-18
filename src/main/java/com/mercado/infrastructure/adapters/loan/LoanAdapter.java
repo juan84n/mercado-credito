@@ -14,6 +14,12 @@ import com.mercado.domain.repository.LoanRepositoryI;
 import com.mercado.infrastructure.persistence.dao.LoanDaoI;
 import com.mercado.infrastructure.persistence.entitites.LoanEntity;
 
+/**
+ * @author juanfelipenarvaez
+ * 
+ * Adaptador que implementa el repositorio del dominio de préstamos
+ *
+ */
 @Service
 public class LoanAdapter implements LoanRepositoryI {
 	
@@ -21,6 +27,13 @@ public class LoanAdapter implements LoanRepositoryI {
 	private LoanDaoI loanDao;
 	
 
+	/**
+	 * 
+	 * Implementación de repo para solicitar un préstamo
+	 *@Param loan
+	 *@return loan
+	 *
+	 */
 	@Override
 	public Loan requestLoan(Loan loan) {
 
@@ -28,6 +41,13 @@ public class LoanAdapter implements LoanRepositoryI {
 		return LoanTransformer.loanEntityToLoan(loanEntity);
 	}
 
+	/**
+	 *
+	 *Implemementación de repo para listar préstamos por rango de fecha
+	 *
+	 *@param
+	 *@return
+	 */
 	@Override
 	public List<Loan> listLoan(Timestamp startDate, Timestamp endDate) {
 		if(startDate == null || endDate == null) {
@@ -44,6 +64,13 @@ public class LoanAdapter implements LoanRepositoryI {
         
 	}
 
+	/**
+	 *
+	 *Implemementación de repo para obtener un usuario por id y por fecha
+	 *
+	 *@param
+	 *@return
+	 */
 	@Override
 	public List<Loan> getLoansByUser(long user_id, Timestamp startDate) {
 		return loanDao.findByUserId(user_id, startDate).stream()
@@ -51,6 +78,13 @@ public class LoanAdapter implements LoanRepositoryI {
 				.collect(Collectors.toList());
 	}
 
+	/**
+	 *
+	 *Implemementación de repo para obtener un préstamo por id
+	 *
+	 *@param
+	 *@return
+	 */
 	@Override
 	public Loan getLoanById(long loan_id) {
 		LoanEntity loanEntity = loanDao.getById(loan_id);

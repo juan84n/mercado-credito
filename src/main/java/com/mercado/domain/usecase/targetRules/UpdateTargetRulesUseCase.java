@@ -6,6 +6,12 @@ import com.mercado.domain.models.TargetRules;
 import com.mercado.domain.models.UserEnum;
 import com.mercado.domain.repository.TargetRulesRepositoryI;
 
+/**
+ * @author juanfelipenarvaez
+ * 
+ * Caso de uso para actualizar las reglas
+ *
+ */
 public class UpdateTargetRulesUseCase {
 	private TargetRulesRepositoryI targetRulesRepository;
 
@@ -13,6 +19,12 @@ public class UpdateTargetRulesUseCase {
 		this.targetRulesRepository = targetRulesRepository;
 	}
 	
+	/**
+	 * 
+	 * Método que accede al repositorio par actualizar las reglas
+	 * @param targetRules
+	 * @return
+	 */
 	public TargetRules updateTargetRules(TargetRules targetRules) {
 		if(!targetRules.getType().equals(UserEnum.NEW.getTarget()) &&
 				!targetRules.getType().equals(UserEnum.FREQUENT.getTarget()) && 
