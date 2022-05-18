@@ -10,10 +10,10 @@ Stack arquitectonico.
 - Arquitectura Hexagonal
 - DDD(Domain Driven Design)
 
-##Ejecución
+## Ejecución
 Si se sube al Spring tools suite se puede usar el maven instalado
 
-##Ejecución sin Spring tools suite
+## Ejecución sin Spring tools suite
 
 Se debe tener maven instalado y ubicarse dentro de la carpeta raíz del proyecto y ejecutar:
 - mvn install(para generar el jar)
