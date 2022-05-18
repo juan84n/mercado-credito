@@ -2,19 +2,19 @@ package com.mercado.domain.models;
 
 public class User {
 	
-	private int id;
+	private long id;
 	private String name;
-	private UserEnum target;
+	private String target;
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	/**
@@ -32,13 +32,13 @@ public class User {
 	/**
 	 * @return the target
 	 */
-	public UserEnum getTarget() {
+	public String getTarget() {
 		return target;
 	}
 	/**
 	 * @param target the target to set
 	 */
-	public void setTarget(UserEnum target) {
+	public void setTarget(String target) {
 		this.target = target;
 	}
 	

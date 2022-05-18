@@ -1,9 +1,15 @@
 package com.mercado.domain.models;
 
+import java.sql.Timestamp;
+
 public class Payment {
+	
 	private long id;
-	private long loan_id;
-	private long debt;
+	private double amount;
+	private Loan loan;
+	private double missingAmount;
+	private Timestamp date;
+	
 	/**
 	 * @return the id
 	 */
@@ -16,30 +22,56 @@ public class Payment {
 	public void setId(long id) {
 		this.id = id;
 	}
+	
 	/**
-	 * @return the loan_id
+	 * @return the amount
 	 */
-	public long getLoan_id() {
-		return loan_id;
+	public double getAmount() {
+		return amount;
 	}
 	/**
-	 * @param loan_id the loan_id to set
+	 * @param amount the amount to set
 	 */
-	public void setLoan_id(long loan_id) {
-		this.loan_id = loan_id;
+	public void setAmount(double amount) {
+		this.amount = amount;
 	}
 	/**
-	 * @return the debt
+	 * @return the loan
 	 */
-	public long getDebt() {
-		return debt;
+	public Loan getLoan() {
+		return loan;
 	}
 	/**
-	 * @param debt the debt to set
+	 * @param loan the loan to set
 	 */
-	public void setDebt(long debt) {
-		this.debt = debt;
+	public void setLoan(Loan loan) {
+		this.loan = loan;
+	}
+	/**
+	 * @return the missingAmount
+	 */
+	public double getMissingAmount() {
+		return missingAmount;
+	}
+	/**
+	 * @param missingAmount the missingAmount to set
+	 */
+	public void setMissingAmount(double missingAmount) {
+		this.missingAmount = missingAmount;
+	}
+	/**
+	 * @return the date
+	 */
+	public Timestamp getDate() {
+		return date;
+	}
+	/**
+	 * @param date the date to set
+	 */
+	public void setDate(Timestamp date) {
+		this.date = date;
 	}
 	
 	
 }
+
